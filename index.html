@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Univers Galactique ®</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(to bottom,#020617,#111827,#1e1b4b);
+    color:white;
+}
+
+#login{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#020617,#4c1d95,#111827);
+}
+
+.login-box{
+    background:rgba(255,255,255,0.12);
+    padding:35px;
+    border-radius:25px;
+    width:330px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(196,181,253,0.4);
+}
+
+.login-box input{
+    width:90%;
+    padding:12px;
+    margin:10px;
+    border:none;
+    border-radius:15px;
+}
+
+.login-box button, nav button, form button{
+    padding:12px 25px;
+    border:none;
+    border-radius:20px;
+    background:#7c3aed;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.login-box button:hover, nav button:hover, form button:hover{
+    background:#a78bfa;
+}
+
+#error{
+    color:#fecaca;
+}
+
+#pagina{
+    display:none;
+}
+
+header{
+    text-align:center;
+    padding:75px 20px;
+    background:linear-gradient(to right,#312e81,#7c3aed,#9333ea);
+}
+
+header h1{
+    font-size:55px;
+    margin:0;
+}
+
+.marca{
+    font-size:24px;
+    vertical-align:top;
+}
+
+nav{
+    background:#020617;
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+nav button{
+    margin:6px;
+}
+
+section{
+    display:none;
+    padding:35px;
+    max-width:1150px;
+    margin:auto;
+}
+
+.activo{
+    display:block;
+}
+
+h2{
+    color:#ddd6fe;
+    text-align:center;
+}
+
+.caja{
+    background:rgba(255,255,255,0.10);
+    padding:25px;
+    border-radius:25px;
+    margin:25px 0;
+    line-height:1.3;
+}
+
+.tarjetas{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.card{
+    background:#111827;
+    width:280px;
+    padding:20px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 15px rgba(255,255,255,0.15);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.imagen-grande{
+    width:280px;
+    height:190px;
+    object-fit:cover;
+    border-radius:25px;
+    margin:15px;
+}
+
+.flotar{
+    animation:flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-18px);}
+    100%{transform:translateY(0);}
+}
+
+.brillar{
+    animation:brillar 2s infinite alternate;
+}
+
+@keyframes brillar{
+    from{box-shadow:0 0 5px white;}
+    to{box-shadow:0 0 25px #c4b5fd;}
+}
+
+.zoom{
+    animation:zoom 2s infinite alternate;
+}
+
+@keyframes zoom{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+.deslizar{
+    animation:deslizar 3s infinite alternate;
+}
+
+@keyframes deslizar{
+    from{transform:translateX(-15px);}
+    to{transform:translateX(15px);}
+}
+
+.girar{
+    animation:girar 7s linear infinite;
+}
+
+@keyframes girar{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+form{
+    background:rgba(255,255,255,0.10);
+    padding:25px;
+    border-radius:25px;
+    max-width:600px;
+    margin:auto;
+}
+
+form input, form textarea{
+    width:95%;
+    padding:12px;
+    margin:10px;
+    border:none;
+    border-radius:15px;
+}
+
+iframe{
+    border-radius:20px;
+    margin:15px;
+}
+
+footer{
+    background:#020617;
+    text-align:center;
+    padding:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+    <div class="login-box">
+        <h1>Univers Galactique <span class="marca">®</span></h1>
+        <p>Ingresa para explorar la página</p>
+
+        <input type="text" id="usuario" placeholder="Usuario">
+        <input type="password" id="contrasena" placeholder="Contraseña">
+
+        <button onclick="ingresar()">Entrar</button>
+        <p id="error"></p>
+    </div>
+</div>
+
+<div id="pagina">
+
+<header>
+    <h1>Univers Galactique <span class="marca">®</span></h1>
+    <p>Explora la historia espacial, misiones lunares, animales, satélites y el futuro del universo</p>
+</header>
+
+<nav>
+    <button onclick="mostrar('inicio')">Inicio</button>
+    <button onclick="mostrar('historia')">Línea de tiempo</button>
+    <button onclick="mostrar('personas')">Personas</button>
+    <button onclick="mostrar('animales')">Animales</button>
+    <button onclick="mostrar('quetzal')">Quetzal</button>
+    <button onclick="mostrar('artemis')">Artemis II</button>
+    <button onclick="mostrar('videos')">Videos</button>
+    <button onclick="mostrar('formulario')">Formulario</button>
+</nav>
+
+<section id="inicio" class="activo">
+    <h2>Inicio</h2>
+
+    <div class="caja">
+        <p>El espacio exterior es una de las áreas más fascinantes de la ciencia. En él se encuentran planetas, estrellas, galaxias, cometas, asteroides, satélites naturales y artificiales.</p>
+
+        <p>La humanidad siempre ha sentido curiosidad por el cielo. Primero observó las estrellas para orientarse y medir el tiempo. Después creó telescopios, cohetes, satélites y naves espaciales para explorar más allá de la Tierra.</p>
+
+        <p>Hoy, la exploración espacial permite estudiar el clima, las comunicaciones, la tecnología, la Tierra, la Luna, Marte y otros mundos.</p>
+    </div>
+
+    <div class="tarjetas">
+        <div class="card">
+            <img src="Planetas.png" alt="Planeta" class="zoom">
+            <h3>Planetas</h3>
+            <p>Son cuerpos celestes que orbitan una estrella.</p>
+        </div>
+
+        <div class="card">
+            <img src="Estrellas.png" alt="Estrella" class="brillar">
+            <h3>Estrellas</h3>
+            <p>Producen luz y energía, como nuestro Sol.</p>
+        </div>
+
+        <div class="card">
+            <img src="Galaxia.png" alt="Galaxia" class="flotar">
+            <h3>Galaxias</h3>
+            <p>Son enormes grupos de estrellas, gas y polvo cósmico.</p>
+        </div>
+
+        <div class="card">
+            <img src="astronauta.jpg" alt="Astronauta" class="deslizar">
+            <h3>Astronautas</h3>
+            <p>Personas preparadas para trabajar fuera de la Tierra.</p>
+        </div>
+    </div>
+</section>
+
+<section id="historia">
+    <h2>Línea de tiempo: humanos y el espacio</h2>
+
+    <div class="caja">
+        <h3>1609</h3>
+        <p>Galileo Galilei observó el cielo con telescopio y ayudó a cambiar la forma en que se entendía el universo.</p>
+    </div>
+
+    <div class="caja">
+        <h3>1957</h3>
+        <p>Se lanzó el Sputnik 1, el primer satélite artificial en orbitar la Tierra.</p>
+    </div>
+
+    <div class="caja">
+        <h3>1961</h3>
+        <p>Yuri Gagarin se convirtió en el primer ser humano en viajar al espacio.</p>
+    </div>
+
+    <div class="caja">
+        <h3>1969</h3>
+        <p>Apollo 11 llevó a Neil Armstrong y Buzz Aldrin a caminar sobre la Luna.</p>
+    </div>
+
+    <div class="caja">
+        <h3>1998</h3>
+        <p>Comenzó la construcción de la Estación Espacial Internacional.</p>
+    </div>
+
+    <div class="caja">
+        <h3>2020</h3>
+        <p>Guatemala participó en la exploración espacial con Quetzal-1, el primer satélite guatemalteco.</p>
+    </div>
+
+    <div class="caja">
+        <h3>2026</h3>
+        <p>Artemis II marcó el regreso de astronautas a una misión alrededor de la Luna.</p>
+    </div>
+
+    <center>
+        <img src="linea-tiempo.jpeg" class="imagen-grande brillar" alt="Línea de tiempo">
+        <img src="luna.jpg" class="imagen-grande flotar" alt="Luna">
+    </center>
+</section>
+
+<section id="personas">
+    <h2>Personas importantes en la exploración espacial</h2>
+
+    <div class="caja">
+        <p>La exploración espacial no depende solo de astronautas. También participan matemáticos, ingenieros, físicos, programadores, técnicos, científicos y diseñadores.</p>
+    </div>
+
+    <div class="tarjetas">
+        <div class="card">
+            <img src="yuri.jpg" alt="Yuri Gagarin" class="flotar">
+            <h3>Yuri Gagarin</h3>
+            <p>Primer ser humano en viajar al espacio en 1961.</p>
+        </div>
+
+        <div class="card">
+            <img src="neil.jpg" alt="Neil Armstrong" class="brillar">
+            <h3>Neil Armstrong</h3>
+            <p>Primera persona en caminar sobre la Luna en 1969.</p>
+        </div>
+
+        <div class="card">
+            <img src="buzz.jpg" alt="Buzz Aldrin" class="zoom">
+            <h3>Buzz Aldrin</h3>
+            <p>Segundo ser humano en caminar sobre la Luna.</p>
+        </div>
+
+        <div class="card">
+            <img src="katherine.jpg" alt="Katherine Johnson" class="deslizar">
+            <h3>Katherine Johnson</h3>
+            <p>Matemática que realizó cálculos importantes para misiones de la NASA.</p>
+        </div>
+
+        <div class="card">
+            <img src="christina.jpg" alt="Christina Koch" class="flotar">
+            <h3>Christina Koch</h3>
+            <p>Astronauta de NASA y parte de la tripulación de Artemis II.</p>
+        </div>
+
+        <div class="card">
+            <img src="victor.jpg" alt="Victor Glover" class="brillar">
+            <h3>Victor Glover</h3>
+            <p>Piloto de Artemis II y astronauta de NASA.</p>
+        </div>
+    </div>
+</section>
+
+<section id="animales">
+    <h2>Animales en la exploración espacial</h2>
+
+    <div class="caja">
+        <p>Antes de enviar humanos al espacio, se enviaron animales para estudiar los efectos del vuelo espacial en seres vivos. Estos viajes ayudaron a preparar misiones humanas.</p>
+    </div>
+
+    <div class="tarjetas">
+        <div class="card">
+            <img src="laika.jpg" alt="Laika" class="flotar">
+            <h3>Laika</h3>
+            <p>Perrita enviada al espacio en Sputnik 2 en 1957.</p>
+        </div>
+
+        <div class="card">
+            <img src="ham.jpg" alt="Ham" class="zoom">
+            <h3>Ham</h3>
+            <p>Chimpancé que viajó en una misión suborbital en 1961.</p>
+        </div>
+
+        <div class="card">
+            <img src="tortugas.jpeg" alt="Tortugas" class="brillar">
+            <h3>Tortugas</h3>
+            <p>Algunos animales ayudaron a estudiar los efectos del espacio.</p>
+        </div>
+
+        <div class="card">
+            <img src="belka.png" alt="Belka y Strelka" class="deslizar">
+            <h3>Belka y Strelka</h3>
+            <p>Perros soviéticos que regresaron vivos después de orbitar la Tierra.</p>
+        </div>
+    </div>
+</section>
+
+<section id="quetzal">
+    <h2>Quetzal-1 y Quetzal-2</h2>
+
+    <div class="caja">
+        <h3>Quetzal-1</h3>
+        <p>Quetzal-1 fue el primer satélite guatemalteco. Fue desarrollado por estudiantes, docentes e investigadores de la Universidad del Valle de Guatemala.</p>
+
+        <p>Su lanzamiento en 2020 representó un logro histórico para Guatemala, porque permitió que el país participara en tecnología espacial y formación científica.</p>
+
+        <center>
+            <img src="quetzal1.jpg" class="imagen-grande flotar" alt="Quetzal-1">
+            <img src="uvg.jpg" class="imagen-grande brillar" alt="UVG">
+        </center>
+    </div>
+
+    <div class="caja">
+        <h3>Quetzal-2</h3>
+        <p>Quetzal-2 es el segundo proyecto satelital de UVG. Según UVG, el proyecto avanza con apoyo de Exolaunch y su lanzamiento está proyectado para 2028.</p>
+
+        <p>Este proyecto involucra a estudiantes y busca fortalecer el desarrollo aeroespacial en Guatemala.</p>
+
+        <center>
+            <img src="quetzal2.jpg" class="imagen-grande zoom" alt="Quetzal-2">
+            <img src="satelite.jpg" class="imagen-grande deslizar" alt="Satélite">
+        </center>
+    </div>
+</section>
+
+<section id="artemis">
+    <h2>Artemis II</h2>
+
+    <div class="caja">
+        <p>Artemis II es una misión de NASA relacionada con el regreso de humanos a la Luna. Su objetivo fue probar la nave Orion y el cohete SLS con astronautas a bordo.</p>
+
+        <p>La tripulación de Artemis II está formada por Reid Wiseman, Victor Glover, Christina Koch y Jeremy Hansen.</p>
+
+        <p>Esta misión es importante porque ayuda a preparar futuras misiones a la superficie lunar y a Marte.</p>
+
+        <center>
+            <img src="artemis2.jpg" class="imagen-grande flotar" alt="Artemis II">
+            <img src="orion.jpg" class="imagen-grande brillar" alt="Nave Orion">
+            <img src="cohete.jpg" class="imagen-grande zoom" alt="Cohete">
+        </center>
+    </div>
+</section>
+
+<section id="videos">
+    <h2>Videos sobre el espacio</h2>
+
+    <div class="caja">
+        <p>Videos de YouTube sobre el espacio, la Luna, Artemis y exploración espacial.</p>
+    </div>
+
+    <center>
+        <iframe width="320" height="200" src="https://www.youtube.com/embed/bFCbK_s6Xns" allowfullscreen></iframe>
+
+        <iframe width="320" height="200" src="https://www.youtube.com/embed/M8XPwtptOXY" allowfullscreen></iframe>
+
+        <iframe width="320" height="200" src="https://www.youtube.com/embed/k2QcnqjBQq4" allowfullscreen></iframe>
+
+        <iframe width="320" height="200" src="https://www.youtube.com/embed/6G9Zk7oPT-U" allowfullscreen></iframe>
+
+        <iframe width="320" height="200" src="https://www.youtube.com/embed/PkoFMF-6XfU" allowfullscreen></iframe>
+    </center>
+</section>
+
+<section id="formulario">
+    <h2>Formulario del visitante</h2>
+
+    <form onsubmit="enviarFormulario(); return false;">
+        <input type="text" id="nombre" placeholder="Escribe tu nombre">
+        <input type="email" id="correo" placeholder="Escribe tu correo">
+        <input type="text" id="tema" placeholder="Tema espacial favorito">
+        <textarea id="mensaje" rows="5" placeholder="¿Qué te gustaría aprender del espacio?"></textarea>
+
+        <button type="submit">Enviar información</button>
+        <p id="respuesta"></p>
+    </form>
+</section>
+
+<footer>
+    <p>Univers Galactique ®</p>
+    <p>By Saraí Osorio</p>
+</footer>
+
+</div>
+
+<script>
+function ingresar(){
+    let usuario = document.getElementById("usuario").value;
+    let contrasena = document.getElementById("contrasena").value;
+    let error = document.getElementById("error");
+
+    if(usuario === "" || contrasena === ""){
+        error.innerHTML = "Los espacios no pueden estar vacíos.";
+    }
+    else if(usuario === "Sarai" && contrasena === "espacio2026"){
+        document.getElementById("login").style.display = "none";
+        document.getElementById("pagina").style.display = "block";
+    }
+    else{
+        error.innerHTML = "Usuario o contraseña incorrectos.";
+    }
+}
+
+function mostrar(id){
+    let secciones = document.querySelectorAll("section");
+
+    for(let i = 0; i < secciones.length; i++){
+        secciones[i].classList.remove("activo");
+    }
+
+    document.getElementById(id).classList.add("activo");
+}
+
+function enviarFormulario(){
+    let nombre = document.getElementById("nombre").value;
+    let correo = document.getElementById("correo").value;
+    let tema = document.getElementById("tema").value;
+    let mensaje = document.getElementById("mensaje").value;
+
+    if(nombre === "" || correo === "" || tema === "" || mensaje === ""){
+        document.getElementById("respuesta").innerHTML = "Por favor llena todos los espacios.";
+    }
+    else{
+        document.getElementById("respuesta").innerHTML = "Gracias, " + nombre + ". Tu información fue enviada correctamente.";
+    }
+}
+</script>
+
+</body>
+</html>
