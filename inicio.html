@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Univers Galactique</title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:linear-gradient(to bottom,#030712,#111827,#1e1b4b);
+            color:white;
+        }
+
+        header{
+            text-align:center;
+            padding:70px 20px;
+            background:linear-gradient(to right,#312e81,#7c3aed,#9333ea);
+        }
+
+        header h1{
+            font-size:60px;
+            margin:0;
+        }
+
+        header p{
+            font-size:20px;
+        }
+
+        nav{
+            background:#020617;
+            padding:18px;
+            text-align:center;
+            position:sticky;
+            top:0;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin:15px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        nav a:hover{
+            color:#c4b5fd;
+        }
+
+        main{
+            padding:40px;
+        }
+
+        section{
+            margin-bottom:70px;
+        }
+
+        h2{
+            color:#ddd6fe;
+            text-align:center;
+            margin-bottom:25px;
+        }
+
+        .bienvenida{
+            text-align:center;
+            max-width:1000px;
+            margin:auto;
+            line-height:1.8;
+        }
+
+        .tarjetas{
+            display:flex;
+            justify-content:center;
+            gap:25px;
+            flex-wrap:wrap;
+        }
+
+        .card{
+            background:rgba(255,255,255,0.08);
+            width:290px;
+            padding:20px;
+            border-radius:25px;
+            text-align:center;
+            box-shadow:0 8px 20px rgba(0,0,0,0.5);
+            transition:0.4s;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+        }
+
+        .card img{
+            width:100%;
+            height:190px;
+            object-fit:cover;
+            border-radius:18px;
+        }
+
+        .card h3{
+            color:#c4b5fd;
+        }
+
+        .boton{
+            display:inline-block;
+            margin-top:10px;
+            padding:10px 20px;
+            background:#7c3aed;
+            color:white;
+            text-decoration:none;
+            border-radius:20px;
+            transition:0.3s;
+        }
+
+        .boton:hover{
+            background:#a78bfa;
+        }
+
+        .info{
+            background:rgba(255,255,255,0.08);
+            padding:35px;
+            border-radius:25px;
+            max-width:1100px;
+            margin:auto;
+            line-height:1.9;
+        }
+
+        .datos{
+            display:flex;
+            justify-content:center;
+            gap:25px;
+            flex-wrap:wrap;
+            margin-top:30px;
+        }
+
+        .dato{
+            background:#111827;
+            width:260px;
+            padding:20px;
+            border-radius:20px;
+            text-align:center;
+        }
+
+        .dato h3{
+            color:#a78bfa;
+        }
+
+        .galeria{
+            display:flex;
+            justify-content:center;
+            gap:25px;
+            flex-wrap:wrap;
+            margin-top:35px;
+        }
+
+        .galeria img{
+            width:180px;
+            height:180px;
+            object-fit:cover;
+            border-radius:20px;
+            background:white;
+        }
+
+        /* ANIMACIONES */
+
+        .flotar{
+            animation:flotar 3s ease-in-out infinite;
+        }
+
+        @keyframes flotar{
+            0%{transform:translateY(0);}
+            50%{transform:translateY(-20px);}
+            100%{transform:translateY(0);}
+        }
+
+        .girar{
+            animation:girar 5s linear infinite;
+        }
+
+        @keyframes girar{
+            from{transform:rotate(0deg);}
+            to{transform:rotate(360deg);}
+        }
+
+        .zoom{
+            animation:zoom 2s infinite alternate;
+        }
+
+        @keyframes zoom{
+            from{transform:scale(1);}
+            to{transform:scale(1.15);}
+        }
+
+        .deslizar{
+            animation:deslizar 3s infinite alternate;
+        }
+
+        @keyframes deslizar{
+            from{transform:translateX(-20px);}
+            to{transform:translateX(20px);}
+        }
+
+        .brillar{
+            animation:brillar 2s infinite alternate;
+        }
+
+        @keyframes brillar{
+            from{box-shadow:0 0 5px white;}
+            to{box-shadow:0 0 25px #c4b5fd;}
+        }
+
+        footer{
+            background:#020617;
+            text-align:center;
+            padding:30px;
+            margin-top:50px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <h1>Univers Galactique</h1>
+
+        <p>
+            Explora el universo, las estrellas, galaxias y misterios del espacio.
+        </p>
+
+    </header>
+
+    <!-- MENÚ -->
+
+    <nav>
+
+        <a href="index.html">Inicio</a>
+
+        <a href="planetas.html">Planetas</a>
+
+        <a href="estrellas.html">Estrellas</a>
+
+        <a href="galaxias.html">Galaxias</a>
+
+    </nav>
+
+    <main>
+
+        <!-- INTRODUCCIÓN -->
+
+        <section class="bienvenida">
+
+            <h2>¿Qué es el espacio?</h2>
+
+            <p>
+                El espacio exterior es la enorme región que existe más allá de la atmósfera terrestre.
+                Allí se encuentran galaxias, estrellas, planetas, cometas, meteoritos y muchos otros
+                cuerpos celestes.
+            </p>
+
+            <p>
+                El universo es tan grande que todavía no se conoce completamente.
+                Los científicos continúan explorándolo utilizando telescopios,
+                satélites y misiones espaciales.
+            </p>
+
+        </section>
+
+        <!-- TARJETAS -->
+
+        <section>
+
+            <h2>Explora el universo</h2>
+
+            <div class="tarjetas">
+
+                <div class="card">
+
+                    <img src="Planetas.png" alt="Planeta">
+
+                    <h3>Planetas</h3>
+
+                    <p>
+                        Descubre los diferentes planetas del sistema solar
+                        y sus características principales.
+                    </p>
+
+                    <a href="planetas.html" class="boton">
+                        Explorar
+                    </a>
+
+                </div>
+
+                <div class="card">
+
+                    <img src="Estrellas.png" alt="Estrella">
+
+                    <h3>Estrellas</h3>
+
+                    <p>
+                        Aprende cómo las estrellas producen energía
+                        y brillan en el espacio.
+                    </p>
+
+                    <a href="estrellas.html" class="boton">
+                        Explorar
+                    </a>
+
+                </div>
+
+                <div class="card">
+
+                    <img src="Galaxia.png" alt="Galaxia">
+
+                    <h3>Galaxias</h3>
+
+                    <p>
+                        Observa galaxias llenas de millones
+                        de estrellas y planetas.
+                    </p>
+
+                    <a href="galaxias.html" class="boton">
+                        Explorar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- HISTORIA -->
+
+        <section class="info">
+
+            <h2>Historia de la exploración espacial</h2>
+
+            <p>
+                Desde tiempos antiguos, las personas observaron el cielo para orientarse,
+                medir el tiempo y comprender el universo.
+            </p>
+
+            <p>
+                En el siglo XVII, Galileo Galilei utilizó telescopios para estudiar
+                la Luna y los planetas. Sus descubrimientos ayudaron a cambiar la forma
+                en que las personas entendían el espacio.
+            </p>
+
+            <p>
+                En 1957 se lanzó el Sputnik 1, el primer satélite artificial.
+                Este acontecimiento marcó el inicio de la era espacial.
+            </p>
+
+            <p>
+                En 1969, durante la misión Apollo 11,
+                Neil Armstrong se convirtió en el primer ser humano
+                en caminar sobre la Luna.
+            </p>
+
+            <p>
+                Actualmente se realizan investigaciones sobre Marte,
+                agujeros negros, exoplanetas y la posibilidad de vida fuera de la Tierra.
+            </p>
+
+        </section>
+
+        <!-- DATOS -->
+
+        <section>
+
+            <h2>Datos curiosos</h2>
+
+            <div class="datos">
+
+                <div class="dato">
+
+                    <h3>La Luna</h3>
+
+                    <p>
+                        La gravedad en la Luna es mucho menor que en la Tierra.
+                    </p>
+
+                </div>
+
+                <div class="dato">
+
+                    <h3>Marte</h3>
+
+                    <p>
+                        Marte es conocido como el planeta rojo debido al color
+                        de su superficie.
+                    </p>
+
+                </div>
+
+                <div class="dato">
+
+                    <h3>Saturno</h3>
+
+                    <p>
+                        Saturno tiene enormes anillos formados por roca y hielo.
+                    </p>
+
+                </div>
+
+                <div class="dato">
+
+                    <h3>Sol</h3>
+
+                    <p>
+                        El Sol es una estrella gigante que proporciona luz y calor
+                        a la Tierra.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SISTEMA SOLAR -->
+
+        <section class="info">
+
+            <h2>El Sistema Solar</h2>
+
+            <p>
+                El Sistema Solar está formado por el Sol y todos los cuerpos
+                que giran a su alrededor.
+            </p>
+
+            <p>
+                Los ocho planetas principales son:
+                Mercurio, Venus, Tierra, Marte,
+                Júpiter, Saturno, Urano y Neptuno.
+            </p>
+
+            <p>
+                Algunos planetas son rocosos y otros son gigantes gaseosos.
+                También existen lunas, cometas y asteroides.
+            </p>
+
+        </section>
+
+        <!-- ANIMACIONES -->
+
+        <section>
+
+            <h2>Animaciones espaciales</h2>
+
+            <div class="galeria">
+
+                <img src="imagen.1.png" class="flotar">
+
+                <img src="imagen.2.jpg" class="girar">
+
+                <img src="imagen3.jpeg" class="zoom">
+
+                <img src="imagen4.jpg" class="deslizar">
+
+                <img src="imagen5.jpg" class="brillar">
+
+            </div>
+
+        </section>
+
+        <!-- AGUJEROS NEGROS -->
+
+        <section class="info">
+
+            <h2>Agujeros negros</h2>
+
+            <p>
+                Los agujeros negros son regiones del espacio con una gravedad
+                extremadamente fuerte.
+            </p>
+
+            <p>
+                Su fuerza es tan intensa que ni siquiera la luz puede escapar.
+            </p>
+
+            <p>
+                Los científicos creen que se forman cuando estrellas gigantes
+                colapsan después de una explosión.
+            </p>
+
+        </section>
+
+        <!-- GALAXIAS -->
+
+        <section class="info">
+
+            <h2>Las galaxias</h2>
+
+            <p>
+                Una galaxia es un enorme conjunto de estrellas,
+                gas y polvo cósmico.
+            </p>
+
+            <p>
+                Existen galaxias espirales, elípticas e irregulares.
+            </p>
+
+            <p>
+                La Vía Láctea es la galaxia donde se encuentra
+                nuestro Sistema Solar.
+            </p>
+
+            <p>
+                Algunas galaxias son tan grandes que contienen
+                billones de estrellas.
+            </p>
+
+        </section>
+
+        <!-- VIDA EN EL ESPACIO -->
+
+        <section class="info">
+
+            <h2>¿Existe vida en otros planetas?</h2>
+
+            <p>
+                Los científicos investigan constantemente si existe vida
+                fuera de la Tierra.
+            </p>
+
+            <p>
+                Se estudian exoplanetas que podrían tener agua
+                y condiciones similares a las de nuestro planeta.
+            </p>
+
+            <p>
+                Hasta el momento no se ha confirmado vida extraterrestre,
+                pero continúan las investigaciones.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- PIE -->
+
+    <footer>
+
+        <p>
+            Univers Galactique | Proyecto de Programación
+        </p>
+
+    </footer>
+
+</body>
+<section class="formulario">
+  <h2>Formulario de contacto</h2>
+
+  <form>
+    <label>Nombre:</label>
+    <input type="text" placeholder="Escribe tu nombre" required>
+
+    <label>Correo:</label>
+    <input type="email" placeholder="Escribe tu correo" required>
+
+    <label>Mensaje:</label>
+    <textarea placeholder="Escribe tu mensaje" rows="5" required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+</html>
